@@ -54,6 +54,7 @@ button[data-start]:hover {
 }
 
 button[data-start]:disabled {
+  background: #cfcfcf;
   color: #808080;
   cursor: not-allowed;
 }

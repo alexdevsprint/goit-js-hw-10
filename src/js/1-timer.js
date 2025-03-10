@@ -14,16 +14,20 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    if (selectedDates[0] > new Date()) {
+      userSelectedDate = selectedDates[0];
+      dateTimeBtn.disabled = false;
+    } else {
+      dateTimeBtn.disabled = true;
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+      });
+    }
   },
 };
 
 flatpickr(dateTimePicker, options);
-
-// iziToast.error({
-//     title: 'Error',
-//     message: 'Please choose a date in the future',
-// });
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
