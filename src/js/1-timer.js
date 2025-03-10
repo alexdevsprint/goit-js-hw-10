@@ -29,6 +29,28 @@ const options = {
 
 flatpickr(dateTimePicker, options);
 
+dateTimeBtn.addEventListener('click',setTimer);
+
+function setTimer() {
+    dateTimePicker.disabled = true;
+    dateTimeBtn.disabled = true;
+    let intervalDate = userSelectedDate - new Date();
+
+    let intervalId = setInterval(() => {   
+             
+        intervalDate = intervalDate - 1;
+        console.log(convertMs(intervalDate));
+        if (intervalDate === 0) {
+            clearInterval(intervalId);
+        }   
+
+    }, 1000);
+}
+
+
+
+
+
 function convertMs(ms) {
   // Number of milliseconds per unit of time
   const second = 1000;
