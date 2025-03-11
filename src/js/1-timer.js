@@ -58,8 +58,7 @@ function setTimer() {
     });
 
     if (intervalDate < 0) {
-      clearInterval(intervalId);
-      console.log('stop');
+      clearInterval(intervalId);      
       dateTimePicker.disabled = false;
       dateTimeBtn.disabled = false;
 
