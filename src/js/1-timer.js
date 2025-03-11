@@ -8,6 +8,8 @@ let userSelectedDate;
 const dateTimePicker = document.querySelector('input#datetime-picker');
 const dateTimeBtn = document.querySelector('button[data-start]');
 
+const dateTimeElements = document.querySelectorAll('.value');
+
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -29,27 +31,46 @@ const options = {
 
 flatpickr(dateTimePicker, options);
 
-dateTimeBtn.addEventListener('click',setTimer);
+dateTimeBtn.addEventListener('click', setTimer);
 
 function setTimer() {
-    dateTimePicker.disabled = true;
-    dateTimeBtn.disabled = true;
-    let intervalDate = userSelectedDate - new Date();
+  dateTimePicker.disabled = true;
+  dateTimeBtn.disabled = true;
+  let intervalDate = userSelectedDate - new Date();
 
-    let intervalId = setInterval(() => {   
-             
-        intervalDate = intervalDate - 1;
-        console.log(convertMs(intervalDate));
-        if (intervalDate === 0) {
-            clearInterval(intervalId);
-        }   
+  let intervalId = setInterval(() => {
+    const timeObj = convertMs(intervalDate);
+    const timeArr = [
+      timeObj.days,
+      timeObj.hours,
+      timeObj.minutes,
+      timeObj.seconds,
+    ];
 
-    }, 1000);
+    intervalDate = intervalDate - 1000;
+    console.log(convertMs(intervalDate));
+
+    dateTimeElements.forEach((element, index) => {
+      if (timeArr[index] < 10) {
+        element.textContent = `0${timeArr[index]}`;
+      } else {
+        element.textContent = timeArr[index];
+      }
+    });
+
+    if (intervalDate < 0) {
+      clearInterval(intervalId);
+      console.log('stop');
+      dateTimePicker.disabled = false;
+      dateTimeBtn.disabled = false;
+
+      iziToast.warning({
+        title: 'Attention',
+        message: 'Time is up!',
+      });
+    }
+  }, 1000);
 }
-
-
-
-
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
