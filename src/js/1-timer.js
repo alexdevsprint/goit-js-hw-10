@@ -48,7 +48,6 @@ function setTimer() {
     ];
 
     intervalDate = intervalDate - 1000;
-    console.log(convertMs(intervalDate));
 
     dateTimeElements.forEach((element, index) => {
       if (timeArr[index] < 10) {
@@ -57,7 +56,7 @@ function setTimer() {
         element.textContent = timeArr[index];
       }
     });
-    
+
     if (intervalDate < 0) {
       clearInterval(intervalId);
       console.log('stop');
