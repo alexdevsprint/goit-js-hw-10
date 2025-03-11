@@ -57,7 +57,7 @@ function setTimer() {
         element.textContent = timeArr[index];
       }
     });
-    console.log(interval);
+    
     if (intervalDate < 0) {
       clearInterval(intervalId);
       console.log('stop');
