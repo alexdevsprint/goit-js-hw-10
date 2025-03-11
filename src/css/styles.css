@@ -1,85 +1,9 @@
-* {
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-}
+/**
+  |============================
+  | include css partials with
+  | default @import url()
+  |============================
+*/
 
-ul {
-  list-style-type: none;
-}
-
-input#datetime-picker {
-  border: 1px solid #808080;
-  border-radius: 4px;
-  width: 272px;
-  height: 40px;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  padding: 8px 16px;
-  outline: none;
-  margin-right: 8px;
-  margin-bottom: 32px;
-}
-
-input#datetime-picker:hover {
-  border-color: #000;
-}
-input#datetime-picker:focus {
-  border-color: #4e75ff;
-}
-
-input#datetime-picker:disabled {
-  color: #808080;
-  cursor: not-allowed;
-}
-
-button[data-start] {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.04em;
-  color: #fff;
-  background-color: #4e75ff;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 8px;
-  width: 75px;
-  height: 40px;
-}
-
-button[data-start]:hover {
-  background-color: #6c8cff;
-  cursor: pointer;
-}
-
-button[data-start]:disabled {
-  background: #cfcfcf;
-  color: #808080;
-  cursor: not-allowed;
-}
-
-.timer {
-  display: flex;
-  gap: 24px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  align-items: center
-}
-.value {
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
-  color: #2e2f42;
-}
-.label {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.50;
-  color: #2e2f42;
-  text-transform: uppercase;
-}
+@import url('./1-timer.css');
+@import url('./2-snackbar.css')
