@@ -46,9 +46,7 @@ function setTimer() {
       timeObj.minutes,
       timeObj.seconds,
     ];
-
-    intervalDate = intervalDate - 1000;
-
+   
     dateTimeElements.forEach((element, index) => {
       if (timeArr[index] < 10) {
         element.textContent = `0${timeArr[index]}`;
@@ -57,16 +55,18 @@ function setTimer() {
       }
     });
 
+    intervalDate = intervalDate - 1000;
+    console.log(intervalDate)
+
     if (intervalDate < 0) {
-      clearInterval(intervalId);      
-      dateTimePicker.disabled = false;
-      dateTimeBtn.disabled = false;
+      clearInterval(intervalId);
+      dateTimePicker.disabled = false;      
 
       iziToast.warning({
         title: 'Attention',
         message: 'Time is up!',
       });
-    }
+    }     
   }, 1000);
 }
 
