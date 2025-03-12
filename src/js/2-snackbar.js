@@ -11,30 +11,31 @@ function createPromise(event) {
   event.preventDefault();
   const selectedRadio = document.querySelector('input[name="state"]:checked');
   const delay = Number(delayInput.value);
+
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (selectedRadio.value === 'fulfilled') {
-        resolve('Success! Value passed to resolve function');
+        resolve(delay);
       } else if (selectedRadio.value === 'rejected') {
-        reject('Error! Error passed to reject function');
+        reject(delay);
       }
     }, delay);
   });
 
   promise
     .then(value => {
-      console.log(value);
+      console.log(`Fulfilled ${value}`);
       iziToast.success({
         title: '✅',
-        message: `Fulfilled promise in ${delay}ms`,
+        message: `Fulfilled promise in ${value}ms`,
         icon: false
       });
     })
     .catch(value => {
-      console.log(value);
+      console.log(`Rejected ${value}`);
       iziToast.error({
         title: '❌',
-        message: `Rejected promise in ${delay}ms`,
+        message: `Rejected promise in ${value}ms`,
         icon: false
       });
     });
